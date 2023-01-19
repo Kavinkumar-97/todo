@@ -1,6 +1,7 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) || { pending: [], completed: [] };
 let selectedFilter = localStorage.getItem('selected-filter') || 'all';
 
+// html elements
 const inputForm = document.getElementById('input-form-section');
 const todoInput = document.getElementById('todo-input');
 const taskSection = document.getElementById('tasks-section');
@@ -9,9 +10,11 @@ const completeAllTaskBtn = document.getElementById('complete-all-btn');
 const clearCompletedBtn = document.getElementById('clear-completed-btn');
 const taskFiltersSection = document.getElementById('task-filters');
 
+// Initial setups
 loadTasks();
 updateFilter()
 
+// Event listeners
 inputForm.addEventListener('submit', onAddTask);
 taskSection.addEventListener('click', onClickTaskSection);
 completeAllTaskBtn.addEventListener('click', onCompleteAllTask);
@@ -175,7 +178,7 @@ function updateTaskCount() {
 
 // Updated Footer actions
 function updateFooterActions() {
-    const canEnableCompletedAll = tasks.pending.length > 0;
+    const canEnableCompletedAll = tasks.pending.length > 0 && selectedFilter !== 'completed';
     completeAllTaskBtn.disabled = !canEnableCompletedAll;
 
     const canEnableClearCompleted = tasks.completed.length > 0;
@@ -205,6 +208,7 @@ function addTask(task, index) {
     }
 };
 
+// Delete task
 function deleteTask(task) {
     const taskElement = document.querySelector(`.task[data-id="${task.id}"]`);
     console.log(task);
