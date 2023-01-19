@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Meta Data -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Page Title -->
+        <title>Todo</title>
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/27b86ddd38.js" crossorigin="anonymous"></script>
+        <!-- Style sheet -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <main id="app">
+            <!-- Input section to get user -->
+            <form id="input-form-section">
+                <i class="fa-solid fa-list"></i>
+                <input type="text" placeholder="Type your todo task" id="todo-input" required minlength="3">
+                <button type="submit" id="add-task-btn" class="btn">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </button>
+            </form>
+            <!-- Header Actions Sections -->
+            <section id="task-action-section">
+                <button id="complete-all-btn" class="btn btn-sec">
+                    <i class="fa-solid fa-check-double"></i>
+                    Complete all tasks
+                </button>
+                <button id="clear-completed-btn" class="btn btn-sec">
+                    Clear completed
+                </button>
+            </section>
+            <!-- Tasks Sections -->
+            <section id="tasks-section">
+            </section>
+            <!-- Footer sections -->
+            <section id="footer-section">
+                <span id="task-left"><strong id="task-remaining-count">0</strong> tasks left</span>
+                <div id="task-filters">
+                    <input type="radio" id="all" class="task-filter" name="task-filter" value="all" checked>
+                    <label for="all">All</label>
+                    <input type="radio" id="uncompleted" class="task-filter" name="task-filter" value="uncompleted">
+                    <label for="uncompleted">Uncompleted</label>
+                    <input type="radio" id="completed" class="task-filter" name="task-filter" value="completed">
+                    <label for="completed">Completed</label>
+                </div>
+            </section>
+        </main>
+
+        <!-- Script -->
+        <script src="todo.js"></script>
+    </body>
+
+</html>
