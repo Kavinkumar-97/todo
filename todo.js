@@ -1,5 +1,5 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) || { pending: [], completed: [] };
-let selectedFilter = 'all';
+let selectedFilter = localStorage.getItem('selected-filter') || 'all';
 
 const inputForm = document.getElementById('input-form-section');
 const todoInput = document.getElementById('todo-input');
@@ -10,6 +10,7 @@ const clearCompletedBtn = document.getElementById('clear-completed-btn');
 const taskFiltersSection = document.getElementById('task-filters');
 
 loadTasks();
+updateFilter()
 
 inputForm.addEventListener('submit', onAddTask);
 taskSection.addEventListener('click', onClickTaskSection);
@@ -32,6 +33,7 @@ function onAddTask(e) {
     if (selectedFilter === 'all' || selectedFilter === 'uncompleted') {
         addTask(task, tasks.pending.length);
     }
+    updateFooterActions();
     updateTaskCount();
     updateTasksInLocalStorage();
 }
@@ -123,7 +125,14 @@ function moveTaskToPending(taskId) {
 // Change filters
 function onChangeFilter(e) {
     selectedFilter = e.target.value;
+    localStorage.setItem('selected-filter', selectedFilter);
     loadTasks();
+}
+
+// Select the filter on first time
+function updateFilter() {
+    const selectedFilterElement = document.getElementById(selectedFilter);
+    selectedFilterElement.checked = true;
 }
 
 // Fetch tasks from local storage
@@ -147,6 +156,7 @@ function loadTasks() {
     if (selectedFilter === 'all' || selectedFilter === 'completed') {
         tasks.completed.forEach((task) => addTask(task));
     }
+    updateFooterActions()
     updateTaskCount();
 }
 
@@ -161,6 +171,15 @@ function updateTaskCount() {
         taskCount += tasks.completed.length;
     }
     taskRemainingElement.innerHTML = taskCount.toString();
+}
+
+// Updated Footer actions
+function updateFooterActions() {
+    const canEnableCompletedAll = tasks.pending.length > 0;
+    completeAllTaskBtn.disabled = !canEnableCompletedAll;
+
+    const canEnableClearCompleted = tasks.completed.length > 0;
+    clearCompletedBtn.disabled = !canEnableClearCompleted;
 }
 
 // Add task to DOM

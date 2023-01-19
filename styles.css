@@ -85,6 +85,11 @@ body {
 
 .btn-sec {
     color: var(--secondary-btn-color);
+    cursor: not-allowed;
+}
+
+.btn:disabled {
+    opacity: 0.5;
 }
 
 /* Header actions */
@@ -140,10 +145,6 @@ body {
     background-color: black;
 }
 
-/* #completed {
-    display: none;
-} */
-
 .task-name {
     flex-grow: 1;
     font-size: 1rem;
@@ -171,14 +172,6 @@ body {
 }
 
 /* Task completed styling */
-
-/* .task.completed #uncompleted {
-    display: none;
-}
-
-.task.completed #completed {
-    display: inline-block;
-} */
 
 .task input[type="checkbox"]:checked {
     opacity: 0.5;
