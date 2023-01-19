@@ -12,6 +12,7 @@
         <script src="https://kit.fontawesome.com/27b86ddd38.js" crossorigin="anonymous"></script>
         <!-- Style sheet -->
         <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="images/favicon.png" type="image/x-icon">
     </head>
 
     <body>
@@ -19,7 +20,8 @@
             <!-- Input section to get user -->
             <form id="input-form-section">
                 <i class="fa-solid fa-list"></i>
-                <input type="text" placeholder="Type your todo task" id="todo-input" required minlength="3">
+                <input type="text" placeholder="Type your todo task" id="todo-input" required minlength="3"
+                    maxlength="60">
                 <button type="submit" id="add-task-btn" class="btn">
                     <i class="fa-solid fa-circle-plus"></i>
                 </button>

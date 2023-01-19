@@ -7,7 +7,6 @@
     --separator-color: rgba(0, 0, 0, 0.15);
     --secondary-btn-color: #555;
     --ternary-btn-color: #999;
-
     --task-padding: 0.5rem;
 }
 
@@ -85,11 +84,11 @@ body {
 
 .btn-sec {
     color: var(--secondary-btn-color);
-    cursor: not-allowed;
 }
 
 .btn:disabled {
     opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Header actions */
